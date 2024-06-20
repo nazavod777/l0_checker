@@ -98,6 +98,8 @@ class Checker:
             logger.error(f'{self.account.address} | Claimed')
             return
 
+        logger.success(f'{self.account.address} | Claimable')
+
         async with asyncio.Lock():
             await append_file(
                 file_path='result/unclaimed.txt',
