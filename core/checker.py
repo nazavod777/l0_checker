@@ -33,8 +33,8 @@ class Checker:
                 response_text: str = await r.text()
                 response_json: dict = await r.json(content_type=None)
 
-                if response_json.get('isEligible'):
-                    return True
+                if response_json.get('isEligible', None) is not None:
+                    return response_json['isEligible']
 
                 elif response_json.get('error', '') == 'Record not found':
                     return False
